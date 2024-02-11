@@ -1,0 +1,55 @@
+---
+title: "Project 1"
+author: "Fayed Khan Barno"
+date: "January 18, 2021"
+output: html_document
+---
+
+```{r include = FALSE}
+knitr::opts_chunk$set(echo=FALSE)
+```
+
+```{r include=FALSE}
+library(tidyverse)
+Island<- read_csv("C:/Users/Fayed/Desktop/Assignments/CMSC 205/DATA.csv")
+```
+
+#### Effects of Anti-anxiety Medication on Memory: Another Intrusive Side-Effect of Anti-anxiety Medication?
+
+Fayed Khan Barno
+
+
+According to Aspenridge Recovery anxiety disorders are the most common mental illness in the United States, affecting over 40 million adults every year. While being beneficial to some, it has been well debated whether their debilitating side effects are worth their benefit. 
+Benzodiazepine is a class of anti-anxiety drugs widely used to treat anxiety, panic attacks, depression and etc. According to psychiatryadvisor.com approximately 30.6 million adults in the US used benzodiazepine in 2019. According to Wikipedia, in 2017 10,684 died because of benzodiazepine related incidents and the numbers are still skyrocketing. Hence, it is important to evaluate the extent of the side effects of Benzodiazepines. 
+The figure below contain data regarding trials done on individuals of a range of ages with two drugs belonging to the Benzodiazepine class: Alprazolam and Triazolam. Sugar pills were also introduced to the group as control, but the group was told that they were given medication. The difference in time to remember two specific types of memory: happy or sad, was also recorded to assess the Drug’s effect on memory. 
+
+
+
+```{r, fig.height=6, fig.width=10}
+
+
+
+  ggplot(data=Island, aes(x=age)) + 
+  
+  geom_bar(aes(y=Diff), fill="white", color="red", stat="identity",width=0.2)+
+
+facet_grid(Happy_Sad_group ~ Drug)+
+
+geom_hline(aes(yintercept = mean(Diff)))+
+  
+  ylab("Difference in Time/s, Before Subtracted from After(Less is better)")+
+  
+  xlab("Age of subject")+
+
+  geom_text(x=60, y=50, label="Mean Difference line", color="black")+
+  
+  labs(title="Effect of Anti-anxiety Drugs on Memory:")+
+  geom_curve(x=70, xend=85, y=45, yend=3, arrow=arrow(length=unit(0.3, "cm")), curvature=0.2) 
+  
+  
+```
+Initially, it is apparent the drugs do make a significant change in the cognitive function of the subjects. The subjects take more time to remember both memories as signified by the mean difference line which has a value greater than 0. This means the subjects take more time to remember both type of memories, hence the medicine is significantly altering cognitive processes in the brain and is suppressing memories. 
+
+Also, an interesting observation is that the bars on the top half of the figure are taller than the lower half, which means the subjects take lesser time to remember sad memories. This is true for all 6 graphs hence; this is not a side effect of the medication. According webmd.com this is an intrinsic nature of human beings, or in other words a result of evolution. It is beneficial in the sense that our brain will be focused on potentially threatening information (or sad memories). Surprisingly, patients that were given Sugar pills performed better in the memory test, most actually scored better (or less) contrary to ones that were actually given doses of the medicine. This reflects the brain’s ability to both amplify or suppress different cognitive processes, and how powerful of a role can placebo play in inducing or repelling anxiety.  
+
+
